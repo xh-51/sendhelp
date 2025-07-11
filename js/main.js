@@ -13,21 +13,12 @@ let navState = 'full'; // 'full', 'minimal', 'hidden'
 function handleHeaderScroll() {
     if (!header) return;
     const scrollY = window.scrollY;
-    if (scrollY < 30) {
-        // At the very top or near top, always show full nav and return
+    if (scrollY === 0) {
+        // Only at the very top, show full nav
         header.classList.remove('nav-hidden', 'nav-minimal');
         navState = 'full';
-        lastScrollY = scrollY;
-        ticking = false;
-        return;
-    }
-    if (scrollY > lastScrollY + buffer && navState !== 'hidden') {
-        // Scrolling down by more than buffer
-        header.classList.add('nav-hidden');
-        header.classList.remove('nav-minimal');
-        navState = 'hidden';
-    } else if (scrollY < lastScrollY && navState !== 'minimal' && scrollY >= 30) {
-        // Scrolling up, not at top
+    } else {
+        // At any scroll position, show minimal nav
         header.classList.remove('nav-hidden');
         header.classList.add('nav-minimal');
         navState = 'minimal';
@@ -54,38 +45,48 @@ navLinks.forEach(link => {
 });
 
 // Image zoom modal logic
-const imgZoomLink = document.querySelector('.img-zoom-link');
-const imgZoomModal = document.getElementById('img-zoom-modal');
-const imgZoomModalImg = document.getElementById('img-zoom-modal-img');
-const imgZoomClose = document.querySelector('.img-zoom-close');
-if (imgZoomLink && imgZoomModal && imgZoomModalImg && imgZoomClose) {
-    imgZoomLink.addEventListener('click', function(e) {
+
+document.addEventListener('DOMContentLoaded', function() {
+  const imgZoomLinks = document.querySelectorAll('.img-zoom-link');
+  const imgZoomModal = document.getElementById('img-zoom-modal');
+  const imgZoomModalImg = document.getElementById('img-zoom-modal-img');
+  const imgZoomClose = document.querySelector('.img-zoom-close');
+
+  if (imgZoomLinks.length && imgZoomModal && imgZoomModalImg && imgZoomClose) {
+    imgZoomLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
         e.preventDefault();
-        const img = imgZoomLink.querySelector('img');
+        const img = link.querySelector('img');
         imgZoomModalImg.src = img.src;
         imgZoomModal.style.display = 'flex';
+        imgZoomModal.classList.remove('hidden');
         document.body.classList.add('img-zoom-open');
+      });
     });
     imgZoomClose.addEventListener('click', function() {
-        imgZoomModal.style.display = 'none';
-        imgZoomModalImg.src = '';
-        document.body.classList.remove('img-zoom-open');
+      imgZoomModal.style.display = 'none';
+      imgZoomModal.classList.add('hidden');
+      imgZoomModalImg.src = '';
+      document.body.classList.remove('img-zoom-open');
     });
     imgZoomModal.addEventListener('click', function(e) {
-        if (e.target === imgZoomModal) {
-            imgZoomModal.style.display = 'none';
-            imgZoomModalImg.src = '';
-            document.body.classList.remove('img-zoom-open');
-        }
+      if (e.target === imgZoomModal) {
+        imgZoomModal.style.display = 'none';
+        imgZoomModal.classList.add('hidden');
+        imgZoomModalImg.src = '';
+        document.body.classList.remove('img-zoom-open');
+      }
     });
     document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            imgZoomModal.style.display = 'none';
-            imgZoomModalImg.src = '';
-            document.body.classList.remove('img-zoom-open');
-        }
+      if (e.key === 'Escape') {
+        imgZoomModal.style.display = 'none';
+        imgZoomModal.classList.add('hidden');
+        imgZoomModalImg.src = '';
+        document.body.classList.remove('img-zoom-open');
+      }
     });
-}
+  }
+});
 
 // Slide-in-up animation on scroll
 function animateOnScroll() {

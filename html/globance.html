@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Globance | Project Detail</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="bg-white text-gray-900">
+  <!-- Navigation Bar -->
+  <header>
+    <h1>Ong Xin Hui</h1>
+    <p>Front-End Developer</p>
+    <nav>
+        <a href="../index.html">Home</a> |
+        <a href="projects.html" class="nav-active">Projects</a> |
+        <a href="technical.html">Technical Profile</a> |
+        <a href="more.html">More About Me</a> |
+        <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Navigation (Back) -->
+  <div class="max-w-5xl mx-auto px-4 pt-2">
+    <a href="projects.html" class="inline-flex items-center mb-6 text-sm text-gray-700 hover:text-white transition font-semibold border border-gray-300 rounded-full px-5 py-2 bg-white shadow hover:bg-black focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 ml-[-3rem]">
+      <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+      Back to Projects
+    </a>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="max-w-5xl mx-auto px-4 py-8 lg:py-12">
+    <div class="flex flex-col lg:flex-row items-center gap-8">
+      <div class="flex-1">
+        <h1 class="text-3xl sm:text-4xl font-bold mb-2">🔁 Globance</h1>
+        <h2 class="text-lg sm:text-xl text-gray-600 mb-4 font-medium">B2B NEGOTIATION TOOL – FULL STACK GROUP PROJECT | CHAT, AI & WORKFLOW INTEGRATION</h2>
+        <p class="mb-4 text-base sm:text-lg">A full-stack B2B web app for managing and streamlining negotiations. Developed in the context of internal staff from Kwang Hap Siang negotiating with importers. I was responsible for the negotiation module and AI features.</p>
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs font-semibold">JavaScript</span>
+          <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs font-semibold">Node.js</span>
+          <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs font-semibold">React</span>
+          <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs font-semibold">SQLite</span>
+          <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs font-semibold">MongoDB</span>
+        </div>
+      </div>
+      <div class="flex-1 flex justify-center lg:justify-end">
+        <img src="../images/globance1.jpg" alt="Globance Importer Chat View" class="rounded-xl shadow-lg max-h-72 w-auto object-contain bg-gray-50">
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature Walkthrough -->
+  <section class="max-w-5xl mx-auto px-4 py-8 space-y-12">
+    <!-- 1 -->
+    <div class="grid lg:grid-cols-2 gap-8 items-center">
+      <div class="order-2 lg:order-1">
+        <h3 class="text-xl font-semibold mb-2">🧑‍💼 Importer Chat View</h3>
+        <p class="mb-2">Displays the chat interface from an importer’s perspective when negotiating with Kwang Hap Siang staff.</p>
+        <p class="text-sm text-gray-600 font-medium"> <strong>Skill shown:</strong> Real-time messaging, user-role routing</p>
+      </div>
+      <div class="order-1 lg:order-2 flex justify-center">
+        <a href="#" class="img-zoom-link"><img src="../images/globance1.jpg" alt="Importer Chat View" class="rounded-lg shadow max-h-64 w-auto object-contain bg-gray-50"></a>
+      </div>
+    </div>
+    <!-- 2 -->
+    <div class="grid lg:grid-cols-2 gap-8 items-center">
+      <div class="flex justify-center">
+        <a href="#" class="img-zoom-link"><img src="../images/globance2.jpg" alt="Staff Chat Dashboard" class="rounded-lg shadow max-h-64 w-auto object-contain bg-gray-50"></a>
+      </div>
+      <div>
+        <h3 class="text-xl font-semibold mb-2">📋 Staff Chat Dashboard</h3>
+        <p class="mb-2">As a Kwang Hap Siang staff, users can view a list of all importers they are negotiating with. A side panel displays ongoing conversations. Clicking on a conversation shows chat history and AI message suggestions.</p>
+        <p class="text-sm text-gray-600 font-medium"> <strong>Skill shown:</strong> Role-based UI, chat logic, AI API integration</p>
+      </div>
+    </div>
+    <!-- 3 -->
+    <div class="grid lg:grid-cols-2 gap-8 items-center">
+      <div class="order-2 lg:order-1">
+        <h3 class="text-xl font-semibold mb-2">🧠 AI Message Suggestions</h3>
+        <p class="mb-2">Staff can click AI-generated suggestions (based on chat context) which will automatically populate the message box for further editing before sending.</p>
+        <p class="text-sm text-gray-600 font-medium"> <strong>Skill shown:</strong> AI-assisted communication, message intent prediction</p>
+      </div>
+      <div class="order-1 lg:order-2 flex justify-center">
+        <a href="#" class="img-zoom-link"><img src="../images/globance2.jpg" alt="AI Message Suggestions" class="rounded-lg shadow max-h-64 w-auto object-contain bg-gray-50"></a>
+      </div>
+    </div>
+    <!-- 4 -->
+    <div class="grid lg:grid-cols-2 gap-8 items-center">
+      <div class="flex justify-center">
+        <a href="#" class="img-zoom-link"><img src="../images/globance3.jpg" alt="Negotiation Summary Generation" class="rounded-lg shadow max-h-64 w-auto object-contain bg-gray-50"></a>
+      </div>
+      <div>
+        <h3 class="text-xl font-semibold mb-2">📄 Negotiation Summary Generation</h3>
+        <p class="mb-2">Clicking “Generate Summary” opens a side panel that automatically summarizes the chat conversation into key deal points.</p>
+        <p class="text-sm text-gray-600 font-medium"> <strong>Skill shown:</strong> AI-generated content summarization, structured output formatting</p>
+      </div>
+    </div>
+    <!-- 5 -->
+    <div class="grid lg:grid-cols-2 gap-8 items-center">
+      <div class="order-2 lg:order-1">
+        <h3 class="text-xl font-semibold mb-2">✅ Agreement Preview (Shared Summary View)</h3>
+        <p class="mb-2">Both parties view the same auto-generated negotiation summary in a shared format to avoid misunderstandings. Users can regenerate the summary if messages change.</p>
+        <p class="text-sm text-gray-600 font-medium"> <strong>Skill shown:</strong> Collaborative summary validation, shared content synchronization</p>
+      </div>
+      <div class="order-1 lg:order-2 flex justify-center">
+        <a href="#" class="img-zoom-link"><img src="../images/globance4.jpg" alt="Agreement Preview" class="rounded-lg shadow max-h-64 w-auto object-contain bg-gray-50"></a>
+      </div>
+    </div>
+    <!-- 6 -->
+    <div class="grid lg:grid-cols-2 gap-8 items-center">
+      <div class="flex justify-center">
+        <a href="#" class="img-zoom-link"><img src="../images/globance5.jpg" alt="Manual Editing of Summary" class="rounded-lg shadow max-h-64 w-auto object-contain bg-gray-50"></a>
+      </div>
+      <div>
+        <h3 class="text-xl font-semibold mb-2">✏️ Manual Editing of Summary</h3>
+        <p class="mb-2">Users can click “Edit” to manually modify any section of the summary in case of AI errors or updates.</p>
+        <p class="text-sm text-gray-600 font-medium"> <strong>Skill shown:</strong> Editable AI content, user-override interface design</p>
+      </div>
+    </div>
+    <!-- 7 -->
+    <div class="grid lg:grid-cols-2 gap-8 items-center">
+      <div class="order-2 lg:order-1">
+        <h3 class="text-xl font-semibold mb-2">🤝 Final Agreement State</h3>
+        <p class="mb-2">After both sides agree, the summary is locked. A confirmation message is displayed, and users can download a PDF copy of the agreement.</p>
+        <p class="text-sm text-gray-600 font-medium"> <strong>Skill shown:</strong> State locking, user confirmation workflows, PDF generation</p>
+      </div>
+      <div class="order-1 lg:order-2 flex justify-center">
+        <a href="#" class="img-zoom-link"><img src="../images/globance6.jpg" alt="Final Agreement State" class="rounded-lg shadow max-h-64 w-auto object-contain bg-gray-50"></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reflection Section -->
+  <section class="max-w-5xl mx-auto px-4 py-12">
+    <h2 class="text-2xl font-bold mb-4">💡 WHAT I LEARNED</h2>
+    <div class="space-y-4 text-base">
+      <div>
+        <strong>Building for a multi-role B2B platform</strong><br>
+        Created user flows and interfaces for both negotiating parties, ensuring clarity and seamless interaction.
+      </div>
+      <div>
+        <strong>Integrating AI for productivity</strong><br>
+        Used AI APIs to build suggestion and summarization tools, enhancing communication speed and reducing misunderstandings.
+      </div>
+      <div>
+        <strong>Handling complex state flows and permissions</strong><br>
+        Managed locked/unlocked summary states, permissioned edits, and conditional UI rendering based on agreement status.
+      </div>
+      <div>
+        <strong>Working collaboratively in a full-stack environment</strong><br>
+        Worked closely with teammates to merge frontend, backend, and AI layers, aligning logic across the app ecosystem.
+      </div>
+    </div>
+  </section>
+
+  <!-- Navigation (bottom) -->
+  <!-- Removed Back to Projects button as requested -->
+  <script src="../js/main.js"></script>
+  <!-- Modal for image zoom -->
+  <div id="img-zoom-modal" class="fixed inset-0 z-[99999] flex items-center justify-center bg-black bg-opacity-40" style="display:none;">
+    <div class="relative bg-white rounded-2xl shadow-2xl p-3 flex flex-col items-center max-w-[250px] max-h-[250px] z-[100000]">
+      <span class="img-zoom-close absolute top-10 right-3 text-gray-700 text-xl md:text-2xl cursor-pointer select-none z-[100001] transition-transform duration-300 hover:rotate-180 font-thin tracking-widest drop-shadow-lg">&times;</span>
+      <img id="img-zoom-modal-img" src="" alt="Zoomed image" class="max-w-[200px] w-full max-h-[150px] object-contain rounded-xl">
+    </div>
+  </div>
+  <style>
+    .img-zoom-close {
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 100;
+      letter-spacing: 0.1em;
+      transition: transform 0.4s cubic-bezier(.4,2,.6,1);
+    }
+    .img-zoom-close:hover {
+      transform: rotate(180deg) scale(1.1);
+    }
+    body.img-zoom-open header {
+      z-index: 1 !important;
+    }
+  </style>
+</body>
+</html> 

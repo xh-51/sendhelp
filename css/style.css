@@ -39,6 +39,9 @@ header.nav-minimal {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
     transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 header.nav-minimal h1,
@@ -126,14 +129,6 @@ nav a::after {
 nav a:hover::after, nav a.nav-active::after {
     width: 100%;
     left: 0;
-}
-
-nav a.nav-active {
-    font-weight: 600;
-    color: #1a1a1a;
-    border-bottom: 2px solid #1a1a1a;
-    background: none;
-    pointer-events: none;
 }
 
 /* Main Content */
@@ -514,17 +509,15 @@ h2, .intro-name {
 .project-link::after {
     content: '';
     position: absolute;
-    left: 50%;
+    left: 0;
     bottom: -2px;
     width: 0;
     height: 2px;
     background: #000;
-    transition: width 0.4s cubic-bezier(0.4,0,0.2,1), left 0.4s cubic-bezier(0.4,0,0.2,1);
-    transform: translateX(-50%);
+    transition: width 0.4s cubic-bezier(0.4,0,0.2,1);
 }
 .project-link:hover::after {
     width: 100%;
-    left: 0;
 }
 .cta-section-divider {
     width: 100%;
@@ -875,22 +868,99 @@ body.img-zoom-open {
 .highlight-card, .project-feature-card {
     border-radius: 8px !important;
 }
+/*
 .cta-btn {
     border-radius: 6px !important;
-} 
+}
+*/ 
 
-/* --- Projects Grid --- */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2.5rem;
-  margin-top: 2.5rem;
+/* --- Project Row Two-Column Alternating Layout (2024-06-09) --- */
+.project-row {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: center;
+  gap: 0;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  margin-bottom: 2.5rem;
+  padding: 0;
+  overflow: hidden;
+  min-height: 320px;
+}
+.project-row.row-reverse {
+  flex-direction: row-reverse;
+}
+.project-row .project-image, .project-row .project-content {
+  flex: 1 1 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  background: #fff;
+  padding: 2.5rem 2.5rem;
+}
+.project-row .project-content {
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-right: 2.5rem;
+  padding-left: 2.5rem;
+}
+.project-row .project-image {
+  padding-right: 0;
+  padding-left: 0;
+}
+.project-row .image-slider,
+.project-row .slider-container {
+  width: 100%;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  margin: 0 auto;
+  padding: 0;
+  position: relative;
+}
+.project-row.short-tile .image-slider,
+.project-row.short-tile .slider-container {
+  height: 180px;
+}
+.project-row .slider-image {
+  width: auto !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+  display: block;
+  margin: 0 auto;
+  background: transparent;
+  border-radius: 12px;
+  box-shadow: none;
+  
 }
 @media (max-width: 900px) {
-  .projects-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+  .project-row, .project-row.row-reverse {
+    flex-direction: column !important;
+    min-height: 0;
   }
+  .project-row .project-image, .project-row .project-content {
+    padding: 1.2rem 0.7rem;
+  }
+  .project-row .image-slider,
+  .project-row .slider-container {
+    height: 180px;
+  }
+}
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  margin-bottom: 3.5rem;
 }
 
 /* --- Project Card --- */
@@ -1039,6 +1109,7 @@ body.img-zoom-open {
 }
 
 /* --- Button Fixes --- */
+/*
 .view-project-btn, .view-details-btn {
   background: #1a1a1a;
   color: #fff !important;
@@ -1058,6 +1129,61 @@ body.img-zoom-open {
   color: #fff;
   transform: translateY(-2px) scale(1.03);
   box-shadow: 0 4px 16px rgba(0,0,0,0.13);
+}
+*/
+
+/* --- Remove underline from View Project buttons --- */
+.view-project-btn, .view-project-btn:hover {
+  text-decoration: none !important;
+}
+
+/* --- Center text in project buttons --- */
+.view-project-btn, .view-details-btn, .cta-btn {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --- Chic Button Hover: Black Text, Less Rounded Borders --- */
+.view-project-btn, .view-details-btn, .cta-btn {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1a1a1a;
+  color: #fff !important;
+  border: none;
+  border-radius: 3px;
+  box-shadow: none;
+  transition: background 0.25s, color 0.25s, border 0.25s, box-shadow 0.2s;
+}
+.view-project-btn:hover, .view-details-btn:hover, .cta-btn:hover {
+  background: #fff !important;
+  color: #1a1a1a !important;
+  border: 2px solid #1a1a1a;
+  border-radius: 3px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+}
+
+/* --- Force Black Text on Button Hover (Override All) --- */
+.view-project-btn:hover, .view-details-btn:hover, .cta-btn:hover,
+.view-project-btn:hover span, .view-details-btn:hover span, .cta-btn:hover span,
+.view-project-btn:hover strong, .view-details-btn:hover strong, .cta-btn:hover strong,
+.view-project-btn:hover em, .view-details-btn:hover em {
+  color: #1a1a1a !important;
+}
+
+/* --- Bulletproof: Force Black Text on Button Hover (All Descendants) --- */
+.view-project-btn:hover,
+.view-project-btn:hover *,
+.view-details-btn:hover,
+.view-details-btn:hover *,
+.cta-btn:hover,
+.cta-btn:hover * {
+  color: #1a1a1a !important;
+  fill: #1a1a1a !important;
+  -webkit-text-fill-color: #1a1a1a !important;
 }
 
 /* --- Section Title Fixes --- */
@@ -1303,4 +1429,294 @@ body.img-zoom-open {
     opacity: 1;
     transform: none;
   }
+} 
+
+.hotel-img {
+    object-fit: contain !important;
+    height: 220px;
+    width: 100%;
+    background: #fff;
+    display: block;
+    margin: 0 auto;
+} 
+
+.modal-img-zoom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.85);
+    transition: opacity 0.2s;
+}
+.modal-img-zoom-content {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+    background: #fff;
+    display: block;
+}
+.modal-img-zoom-close {
+    position: absolute;
+    top: 32px;
+    right: 48px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 10001;
+    transition: color 0.2s, transform 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+.modal-img-zoom-close .close-icon {
+    width: 28px;
+    height: 28px;
+    display: block;
+}
+.modal-img-zoom-close .close-icon line {
+    stroke: #fff;
+    stroke-width: 2;
+    stroke-linecap: round;
+    transition: stroke 0.2s;
+}
+.modal-img-zoom-close:hover .close-icon {
+    animation: spinClose 0.6s cubic-bezier(0.4,0,0.2,1) 1;
+}
+@keyframes spinClose {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(180deg); }
+}
+.modal-img-zoom-close:hover .close-icon line {
+    stroke: #ffb3b3;
+}
+@media (max-width: 700px) {
+    .modal-img-zoom-content {
+        max-width: 98vw;
+        max-height: 80vh;
+    }
+    .modal-img-zoom-close {
+        top: 12px;
+        right: 18px;
+        width: 28px;
+        height: 28px;
+    }
+    .modal-img-zoom-close .close-icon {
+        width: 20px;
+        height: 20px;
+    }
+} 
+
+.caret {
+    display: inline-block;
+    width: 1ch;
+    color: #000;
+    animation: blink-caret 0.8s step-end infinite;
+}
+@keyframes blink-caret {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+} 
+
+@media (max-width: 700px) {
+    .highlights-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+    .highlight-card {
+        min-width: 0;
+        padding: 1.2rem 1rem;
+    }
+} 
+
+.highlight-card, .project-feature-card {
+    border-radius: 8px !important;
+}
+/*
+.cta-btn {
+    border-radius: 6px !important;
+}
+*/ 
+
+/* --- Project Row Image Cut-Off Fix (2024-06-09) --- */
+.project-row {
+  align-items: stretch;
+}
+.project-row .project-image,
+.project-row .project-content {
+  flex: 1 1 0;
+}
+.project-row .project-image {
+  min-width: 240px;
+}
+.project-row .slider-image {
+  max-width: 100%;
+  max-height: 220px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  background: transparent;
+  border-radius: 12px;
+  box-shadow: none;
+  
+}
+
+/* --- Slider Image Absolute Positioning for Layered Slider (2024-06-09) --- */
+.project-row .slider-container {
+  position: relative;
+  width: 100%;
+  height: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.project-row .slider-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 0.5s;
+  background: transparent;
+  border-radius: 12px;
+  box-shadow: none;
+}
+.project-row .slider-image.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+/* --- Make Project Slider Area Taller for Portrait Images (2024-06-09) --- */
+.project-row .slider-container,
+.project-row .image-slider {
+  height: 340px !important;
+  background: #fff !important;
+}
+
+/* --- Unified Button Styles (Match .view-project-btn) --- */
+.view-project-btn, .view-details-btn, .cta-btn, button, .slider-btn, .modal-slider-btn {
+  background: #1a1a1a;
+  color: #fff !important;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 6px;
+  box-shadow: none;
+  padding: 0.7rem 1.5rem;
+  margin-top: 0.7rem;
+  margin-bottom: 0.2rem;
+  transition: background 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  outline: none;
+  display: inline-block;
+}
+.view-project-btn, .view-details-btn, .cta-btn {
+  width: 100%;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+.view-project-btn:hover, .view-details-btn:hover, .cta-btn:hover, button:hover, .slider-btn:hover, .modal-slider-btn:hover {
+  background: #000;
+  color: #fff !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.13);
+  transform: translateY(-2px) scale(1.03);
+}
+.slider-btn, .modal-slider-btn {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-radius: 50%;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1a1a1a;
+  color: #fff !important;
+  border: none;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+.slider-btn:hover, .modal-slider-btn:hover {
+  background: #000;
+  color: #fff !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.13);
+} 
+
+/* --- Slide-in-up Animation for Project Rows (2024-06-09) --- */
+.project-row.slide-in-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1);
+}
+.project-row.slide-in-up.visible {
+  opacity: 1;
+  transform: none;
+} 
+
+/* --- Match Rent-to-Go and Globance Cropping to Hotel Website --- */
+.rent-to-go-img,
+.globance-img {
+    object-fit: contain !important;
+    height: 220px;
+    width: 100%;
+    background: #fff;
+    display: block;
+    margin: 0 auto;
+} 
+
+/* --- Nav Underline: Always Full Width with ScaleX Animation --- */
+nav a {
+  position: relative;
+  text-decoration: none;
+  padding-bottom: 4px;
+  display: inline-block;
+}
+nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: #bbb;
+  border-radius: 1px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s, background 0.3s;
+  z-index: 1;
+}
+nav a:hover::after,
+nav a:focus::after {
+  transform: scaleX(1);
+  background: #bbb;
+}
+nav a.nav-active::after {
+  transform: scaleX(1);
+  background: #1a1a1a;
+}
+nav a.nav-active {
+  font-weight: 600;
+  color: #1a1a1a;
+  background: none;
+  pointer-events: none;
+  border-bottom: none !important;
 } 

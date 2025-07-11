@@ -32,59 +32,85 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalPrevBtn = document.querySelector('.modal-slider-btn.prev-btn');
     const modalNextBtn = document.querySelector('.modal-slider-btn.next-btn');
 
-    // Placeholder project data
-    const projectData = {
-        'bandori': {
-            title: 'Bandori Static Website',
-            description: 'A fan site for an anime rhythm game. Responsive, animated, and built to sharpen my front-end foundations.',
-            techStack: ['HTML', 'CSS', 'JavaScript'],
-            details: `<b>Project Overview</b><br>Developed a fully responsive website for a music band featuring modern design principles and smooth animations.<br><br><b>Key Features</b><ul><li>Responsive design</li><li>Interactive navigation</li><li>Image galleries</li></ul>`,
-            images: [
-                'https://placehold.co/400x240?text=Bandori+Slide+1',
-                'https://placehold.co/400x240?text=Bandori+Slide+2',
-                'https://placehold.co/400x240?text=Bandori+Slide+3'
-            ]
-        },
-        'smart-cart': {
-            title: 'Smart Cart Prototype',
-            description: 'A smart cart checkout concept using RFID. Prototyped in Figma to show seamless in-cart payment.',
-            techStack: ['Figma', 'UI Prototyping', 'Tech Research'],
-            details: `<b>Project Overview</b><br>Smart cart solution for retail with real-time inventory and analytics.<br><br><b>Key Features</b><ul><li>Inventory tracking</li><li>User analytics</li><li>Mobile app integration</li></ul>`,
-            images: [
-                'https://placehold.co/400x240?text=Smart+Cart+Slide+1',
-                'https://placehold.co/400x240?text=Smart+Cart+Slide+2',
-                'https://placehold.co/400x240?text=Smart+Cart+Slide+3'
-            ]
-        },
-        'tableau': {
-            title: 'Tableau Dashboard Project',
-            description: 'A KPI dashboard with interactive charts for business analytics, built with Tableau Prep and Desktop.',
-            techStack: ['Tableau', 'Data Analytics', 'DAV Module'],
-            details: `<b>Project Overview</b><br>Created dashboards for business intelligence and performance monitoring.<br><br><b>Key Features</b><ul><li>Interactive charts</li><li>KPI tracking</li><li>Custom filtering</li></ul>`,
-            images: [
-                'https://placehold.co/400x240?text=Tableau+Slide+1',
-                'https://placehold.co/400x240?text=Tableau+Slide+2',
-                'https://placehold.co/400x240?text=Tableau+Slide+3'
-            ]
-        }
+    // --- Modal Project Details Data (Updated 2024-06-09) ---
+    const projectDetails = {
+      tableau: {
+        title: 'Tableau Dashboard Project',
+        description: 'A business intelligence dashboard built with Tableau Prep and Desktop to visualize banking channel trends and performance KPIs.',
+        tech: ['Tableau', 'Data Analytics', 'Tableau Prep Builder'],
+        overview: 'Created an interactive dashboard using Tableau for Quantum Vault Bank Ltd, a fictional bank used in a data analysis assignment. The project involved cleaning and preparing a simulated dataset with Tableau Prep Builder to examine shifts in customer transaction behavior across ATM, internet banking, OTC, and CDM channels.',
+        features: [
+          'Interactive visualizations and KPI tracking',
+          'Custom filters by channel and year',
+          'Insights into user preferences and digital vs. physical banking trends'
+        ],
+        impact: 'Enabled data-driven decisions on improving branch services, enhancing digital security, and scaling self-service tools based on customer behavior.',
+        images: [
+          '../images/tableau1.jpg',
+          '../images/tableau2.jpg'
+        ]
+      },
+      'smart-cart': {
+        title: 'Smart Cart Prototype',
+        description: 'A conceptual smart shopping cart designed in Figma to streamline in-store checkout using RFID and weight sensors.',
+        tech: ['Figma', 'UI Prototyping', 'Tech Research'],
+        overview: 'Prototyped a smart cart interface that detects products in real time, enabling automatic payment and reducing queue times.',
+        features: [
+          'RFID and sensor-based item recognition',
+          'Real-time cart total display',
+          'Seamless checkout via cart interface'
+        ],
+        impact: 'Demonstrated innovation in retail tech by improving user convenience, reducing friction at checkout, and reimagining future store experiences.',
+        images: [
+          '../images/smartcart1.jpg',
+          '../images/smartcart2.jpg'
+        ]
+      },
+      bandori: {
+        title: 'Bandori Fan Website',
+        description: 'A static website built to showcase game content for the anime rhythm game BanG Dream! Girls Band Party!',
+        tech: ['HTML', 'CSS', 'JavaScript'],
+        overview: 'Created as one of my first front-end development projects, this fan site displays character bios, band info, and song highlights in a clean and interactive layout.',
+        features: [
+          'Responsive layout with themed styling',
+          'Interactive tabs for exploring band members',
+          'Scroll-based animations and visual enhancements'
+        ],
+        impact: 'Helped build foundational skills in layout structuring, styling, and basic interactivity — and nurtured my interest in aesthetic, user-friendly web design.',
+        images: [
+          '../images/bandori1.jpg',
+          '../images/bandori2.jpg',
+          '../images/bandori3.jpg',
+          '../images/bandori4.jpg',
+          '../images/bandori5.jpg'
+        ]
+      }
     };
 
     let currentModalSlide = 0;
     let currentModalImages = [];
 
     function openModal(projectId) {
-        const project = projectData[projectId];
+        const project = projectDetails[projectId];
         if (!project) return;
         modalTitle.textContent = project.title;
         modalDescription.textContent = project.description;
         modalTechStack.innerHTML = '';
-        project.techStack.forEach(tech => {
+        project.tech.forEach(tech => {
             const tag = document.createElement('span');
             tag.className = 'tech-tag';
             tag.textContent = tech;
             modalTechStack.appendChild(tag);
         });
-        modalDetails.innerHTML = project.details;
+        modalDetails.innerHTML = `
+            <b>Project Overview</b><br>${project.overview}<br><br>
+            <b>Key Features</b>
+            <ul style="margin-left: 1.5em; padding-left: 1em;">
+                ${project.features.map(feature => `<li>${feature}</li>`).join('')}
+            </ul>
+            <div style="margin-top: 1.5em;"></div>
+            <b>Impact</b><br>${project.impact}
+        `;
         // Images
         modalSliderContainer.innerHTML = '';
         currentModalImages = project.images;
@@ -141,8 +167,21 @@ document.addEventListener('DOMContentLoaded', function() {
         const images = slider.querySelectorAll('.slider-image');
         const prevBtn = slider.querySelector('.prev-btn');
         const nextBtn = slider.querySelector('.next-btn');
-        const dots = slider.querySelectorAll('.dot');
+        const dotsContainer = slider.querySelector('.slider-dots');
         let current = 0;
+        // Generate dots dynamically
+        dotsContainer.innerHTML = '';
+        images.forEach((_, i) => {
+            const dot = document.createElement('span');
+            dot.className = 'dot' + (i === 0 ? ' active' : '');
+            dot.setAttribute('data-slide', i);
+            dot.addEventListener('click', function(e) {
+                e.preventDefault();
+                show(i);
+            });
+            dotsContainer.appendChild(dot);
+        });
+        const dots = dotsContainer.querySelectorAll('.dot');
         function show(idx) {
             images.forEach((img, i) => img.classList.toggle('active', i === idx));
             dots.forEach((dot, i) => dot.classList.toggle('active', i === idx));
@@ -156,12 +195,69 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             show((current - 1 + images.length) % images.length);
         });
-        dots.forEach((dot, i) => {
-            dot.addEventListener('click', function(e) {
-                e.preventDefault();
-                show(i);
-            });
-        });
         show(0);
     });
+
+    // Featured project image hover swap
+    document.querySelectorAll('.project-thumbnail[data-hover-src]').forEach(img => {
+        const originalSrc = img.src;
+        const hoverSrc = img.getAttribute('data-hover-src');
+        img.addEventListener('mouseenter', () => {
+            img.src = hoverSrc;
+        });
+        img.addEventListener('mouseleave', () => {
+            img.src = originalSrc;
+        });
+    });
+
+    // --- Modal image zoom ---
+    const modalImgZoom = document.getElementById('modal-img-zoom');
+    const modalImgZoomImg = document.getElementById('modal-img-zoom-img');
+    const modalImgZoomClose = document.querySelector('.modal-img-zoom-close');
+    // Delegate click to modal slider images
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('modal-slider-image')) {
+            modalImgZoomImg.src = e.target.src;
+            modalImgZoom.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+    });
+    if (modalImgZoomClose) modalImgZoomClose.addEventListener('click', function() {
+        modalImgZoom.style.display = 'none';
+        modalImgZoomImg.src = '';
+        document.body.style.overflow = '';
+    });
+    if (modalImgZoom) modalImgZoom.addEventListener('click', function(e) {
+        if (e.target === modalImgZoom) {
+            modalImgZoom.style.display = 'none';
+            modalImgZoomImg.src = '';
+            document.body.style.overflow = '';
+        }
+    });
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modalImgZoom.style.display === 'flex') {
+            modalImgZoom.style.display = 'none';
+            modalImgZoomImg.src = '';
+            document.body.style.overflow = '';
+        }
+    });
+
+    // --- Slide-in-up Animation for Project Rows ---
+    (function() {
+      const rows = document.querySelectorAll('.project-row.slide-in-up');
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries, obs) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              obs.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.5, rootMargin: '0px 0px -80px 0px' });
+        rows.forEach(row => observer.observe(row));
+      } else {
+        // Fallback for old browsers
+        rows.forEach(row => row.classList.add('visible'));
+      }
+    })();
 }); 
