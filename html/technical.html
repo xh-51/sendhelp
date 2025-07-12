@@ -5,6 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Technical Profile - Front-End Developer Portfolio</title>
     <link rel="stylesheet" href="../css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+      .footer {
+        font-family: Inter, Arial, sans-serif;
+      }
+      .footer-link {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s, border-bottom 0.2s;
+        border-bottom: 2px solid transparent;
+        padding-bottom: 2px;
+      }
+      .footer-link-active {
+        color: #d4d4d4;
+        border-bottom: 2px solid #d4d4d4;
+        cursor: default;
+      }
+      .footer-link:hover {
+        color: #d1d5db;
+        border-bottom: 2px solid #d1d5db;
+      }
+      .footer i.fab {
+        transition: transform 0.2s, color 0.2s;
+      }
+      .footer a:hover i.fab {
+        color: #d1d5db;
+        transform: scale(1.15) rotate(-8deg);
+      }
+      @media (max-width: 700px) {
+        .footer nav {
+          flex-direction: column;
+          gap: 0.5rem;
+          align-items: center;
+        }
+        .footer .max-w-5xl {
+          flex-direction: column;
+          gap: 1.5rem;
+          align-items: flex-start;
+        }
+      }
+    </style>
 </head>
 <body>
     <header>
@@ -25,32 +69,71 @@
                 <div class="skills-category">
                     <h3>Front-End Development</h3>
                     <ul class="skills-list">
-                        <li><strong>React:</strong> Built dynamic, component-based UIs and managed state with hooks and Redux.</li>
-                        <li><strong>JavaScript (ES6+):</strong> Developed interactive features and handled asynchronous data fetching.</li>
-                        <li><strong>TypeScript:</strong> Improved code quality and maintainability with static typing.</li>
-                        <li><strong>HTML5 & CSS3:</strong> Created responsive layouts and modern web interfaces.</li>
+                        <li><strong>HTML:</strong><br>Structured clean layouts for projects like Rent-to-Go and the UX Hotel Prototype, ensuring accessibility and clarity.</li>
+                        <li><strong>CSS:</strong><br>Styled responsive layouts with attention to visual hierarchy and user experience.</li>
+                        <li><strong>JavaScript:</strong><br>Added interactivity and search filtering in Rent-to-Go and AI chat in Globance.</li>
+                        <li><strong>React:</strong><br>Built UI components and features like chat panels and AI prompts in your full-stack project.</li>
+                        <li><strong>Figma:</strong><br>Designed UX-first prototypes for the UX Hotel Website, focused on flow, clarity, and branding.</li>
+                        <li><strong>Canva:</strong><br>Created clean UI visuals and mockups to support design storytelling.</li>
                     </ul>
                 </div>
                 <div class="skills-category">
-                    <h3>Tools & Technologies</h3>
+                    <h3>Back-End Development</h3>
                     <ul class="skills-list">
-                        <li><strong>Git:</strong> Version control for collaborative projects and solo work.</li>
-                        <li><strong>Webpack:</strong> Bundled and optimized assets for production.</li>
-                        <li><strong>SASS/SCSS:</strong> Wrote modular, maintainable stylesheets.</li>
-                        <li><strong>npm/yarn:</strong> Managed project dependencies and scripts.</li>
+                        <li><strong>Python:</strong><br>Developed server logic in Rent-to-Go, handling forms, validation, and admin workflows.</li>
+                        <li><strong>C#:</strong><br>Applied object-oriented principles to develop logic-driven applications and scripts.</li>
+                        <li><strong>Flask:</strong><br>Managed app routing and database logic in your Rent-to-Go project.</li>
+                        <li><strong>Node.js:</strong><br>Built APIs in Globance for chat, AI summaries, and MongoDB communication.</li>
                     </ul>
                 </div>
                 <div class="skills-category">
-                    <h3>Design & UX</h3>
+                    <h3>Development Tools & Technologies</h3>
                     <ul class="skills-list">
-                        <li><strong>Figma:</strong> Translated design prototypes into pixel-perfect UIs.</li>
-                        <li><strong>Responsive Design:</strong> Ensured seamless experience across devices.</li>
-                        <li><strong>Accessibility:</strong> Followed best practices for inclusive web design.</li>
+                        <li><strong>Visual Studio Code:</strong><br>Primary IDE used across front-end and full-stack projects with Git support.</li>
+                        <li><strong>PyCharm:</strong><br>Used for Flask and Python-based development in server-side applications.</li>
+                        <li><strong>Github:</strong><br>Handled version control and collaboration through branches and commits.</li>
                     </ul>
+                </div>
+                <div class="skills-category">
+                    <h3>Data & Visualization</h3>
+                    <ul class="skills-list">
+                        <li><strong>Tableau:</strong><br>Built interactive dashboards to analyze behavior trends from fictional bank datasets.</li>
+                        <li><strong>Tableau Prep Builder:</strong><br>Cleaned and prepped datasets for dashboard integration and exploration.</li>
+                    </ul>
+                </div>
+                <div class="skills-category">
+                    <h3>Methodologies</h3>
+                    <ul class="skills-list">
+                        <li><strong>Agile:</strong><br>Worked in sprint-like team settings, adapting tasks and project goals iteratively.</li>
+                        <li><strong>Scrum:</strong><br>Applied user story mapping, task breakdown, and backlog planning in simulation projects.</li>
                 </div>
             </div>
         </section>
     </main>
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <div class="footer-contact-title">Contact</div>
+          <div><a href="mailto:sgongxinhui@gmail.com" class="footer-contact-email">sgongxinhui@gmail.com</a></div>
+          <div class="footer-contact-phone">+65 88282680</div>
+        </div>
+        <div class="footer-icons">
+          <a href="https://github.com/xh-51" target="_blank" rel="noopener" class="footer-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/xin-hui-ong-168a39342/" target="_blank" rel="noopener" class="footer-link" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
+        <nav class="footer-nav">
+          <a href="../index.html" class="footer-link">Home</a>
+          <a href="projects.html" class="footer-link">Projects</a>
+          <a href="technical.html" class="footer-link footer-link-active">Technical Profile</a>
+          <a href="more.html" class="footer-link">About Me</a>
+          <a href="contact.html" class="footer-link">Contact</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-copyright">© 2025 Ong Xin Hui. All rights reserved.</div>
+        <div class="footer-tagline">Building efficient and user-centered web solutions.</div>
+      </div>
+    </footer>
     <script src="../js/main.js"></script>
 </body>
 </html> 

@@ -6,6 +6,7 @@
   <title>Globance | Project Detail</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body class="bg-white text-gray-900">
   <!-- Navigation Bar -->
@@ -160,7 +161,7 @@
   <!-- Modal for image zoom -->
   <div id="img-zoom-modal" class="fixed inset-0 z-[99999] flex items-center justify-center bg-black bg-opacity-40" style="display:none;">
     <div class="relative bg-white rounded-2xl shadow-2xl p-3 flex flex-col items-center max-w-[250px] max-h-[250px] z-[100000]">
-      <span class="img-zoom-close absolute top-10 right-3 text-gray-700 text-xl md:text-2xl cursor-pointer select-none z-[100001] transition-transform duration-300 hover:rotate-180 font-thin tracking-widest drop-shadow-lg">&times;</span>
+      <span class="img-zoom-close absolute top-40 right-6 text-gray-700 text-3xl md:text-4xl cursor-pointer select-none z-[100001] transition-transform duration-300 hover:rotate-180 font-thin tracking-widest drop-shadow-lg">&times;</span>
       <img id="img-zoom-modal-img" src="" alt="Zoomed image" class="max-w-[200px] w-full max-h-[150px] object-contain rounded-xl">
     </div>
   </div>
@@ -178,5 +179,29 @@
       z-index: 1 !important;
     }
   </style>
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <div class="footer-contact-title">Contact</div>
+        <div><a href="mailto:sgongxinhui@gmail.com" class="footer-contact-email">sgongxinhui@gmail.com</a></div>
+        <div class="footer-contact-phone">+65 88282680</div>
+      </div>
+      <div class="footer-icons">
+        <a href="https://github.com/xh-51" target="_blank" rel="noopener" class="footer-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/xin-hui-ong-168a39342/" target="_blank" rel="noopener" class="footer-link" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      </div>
+      <nav class="footer-nav">
+        <a href="../index.html" class="footer-link">Home</a>
+        <a href="projects.html" class="footer-link footer-link-active">Projects</a>
+        <a href="technical.html" class="footer-link">Technical Profile</a>
+        <a href="more.html" class="footer-link">About Me</a>
+        <a href="contact.html" class="footer-link">Contact</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copyright">© 2025 Ong Xin Hui. All rights reserved.</div>
+      <div class="footer-tagline">Building efficient and user-centered web solutions.</div>
+    </div>
+  </footer>
 </body>
 </html> 

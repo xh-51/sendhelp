@@ -88,27 +88,6 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-// Slide-in-up animation on scroll
-function animateOnScroll() {
-    const slideEls = document.querySelectorAll('.slide-in-up');
-    const observer = new window.IntersectionObserver(
-        (entries, obs) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animationPlayState = 'running';
-                    obs.unobserve(entry.target);
-                }
-            });
-        },
-        { threshold: 0.15 }
-    );
-    slideEls.forEach(el => {
-        el.style.animationPlayState = 'paused';
-        observer.observe(el);
-    });
-}
-document.addEventListener('DOMContentLoaded', animateOnScroll);
-
 // Multi-line typewriter effect for intro
 function runTypewriterIntro() {
     const lines = [
@@ -135,4 +114,46 @@ function runTypewriterIntro() {
     }
     typeLine();
 }
-document.addEventListener('DOMContentLoaded', runTypewriterIntro); 
+document.addEventListener('DOMContentLoaded', runTypewriterIntro);
+
+// --- Scroll-triggered slide-in for hero-section only ---
+function triggerSlideInOnScroll() {
+  const heroSection = document.querySelector('.hero-section');
+  if (!heroSection) return;
+  const observer = new window.IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          heroSection.classList.add('slide-in-up');
+          observer.unobserve(heroSection);
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+  observer.observe(heroSection);
+}
+
+document.addEventListener('DOMContentLoaded', triggerSlideInOnScroll);
+
+// --- Global scroll-triggered slide-in for all .slide-in-up elements ---
+function globalSlideInOnScroll() {
+  const slideEls = document.querySelectorAll('.slide-in-up');
+  if (!slideEls.length) return;
+  const observer = new window.IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationPlayState = 'running';
+          obs.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+  slideEls.forEach(el => {
+    el.style.animationPlayState = 'paused';
+    observer.observe(el);
+  });
+}
+document.addEventListener('DOMContentLoaded', globalSlideInOnScroll); 
