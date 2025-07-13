@@ -6,6 +6,7 @@
     <title>More About Me - Front-End Developer Portfolio</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- No turn.js CSS needed -->
 </head>
 <body>
     <header>
@@ -20,26 +21,114 @@
         </nav>
     </header>
     <main>
-        <section id="more-about-me">
-            <h2>More About Me</h2>
-            <div style="max-width:700px;margin:0 auto;text-align:center;">
-                <h3>Soft Skills</h3>
-                <ul class="skills-list">
-                    <li>Empathetic communicator</li>
-                    <li>Team player</li>
-                    <li>Adaptable & quick learner</li>
-                    <li>Attention to detail</li>
-                </ul>
-                <h3>Volunteering</h3>
-                <p>Active volunteer in local community tech workshops, helping others learn coding basics and web development.</p>
-                <h3>Hobbies</h3>
-                <ul class="skills-list">
-                    <li>Crochet</li>
-                    <li>Photography</li>
-                </ul>
+        <h2>About Me</h2>
+        <div id="crochet-book-wrapper" style="display:flex;justify-content:center;margin:2rem 0;">
+          <div>
+            <div id="crochet-book">
+              <!-- Cover page -->
+              <div class="page book-cover">
+                <h3>My Crochet Gallery</h3>
+                <p>Welcome! Flip through to see my projects.</p>
+              </div>
+              <!-- Spread 1: Left (images) -->
+              <div class="page">
+                <img src="../images/1ball1.jpg" alt="Crochet ball keychain 1" class="book-img" />
+                <img src="../images/1ball2.jpg" alt="Crochet ball keychain 2" class="book-img" />
+              </div>
+              <!-- Spread 1: Right (text) -->
+              <div class="page">
+                <p class="book-desc">I began with basic shapes like ball keychains to understand the core structure of crochet. This foundation taught me patience and control — much like writing clean HTML and CSS when starting front-end development.</p>
+              </div>
+              <!-- Spread 2: Left (images) -->
+              <div class="page">
+                <img src="../images/2hat.jpg" alt="Crochet hat" class="book-img" />
+                <img src="../images/2leg.jpg" alt="Crochet leg" class="book-img" />
+              </div>
+              <!-- Spread 2: Right (text) -->
+              <div class="page">
+                <p class="book-desc">Next, I tried working with uniform rows and repeated stitch patterns. This mirrors how I learned layout consistency and style systems — essential to a smooth front-end experience.</p>
+              </div>
+              <!-- Spread 3: Left (images) -->
+              <div class="page">
+                <img src="../images/3cat.jpg" alt="Crochet cat" class="book-img" />
+                <img src="../images/3cherry.jpg" alt="Crochet cherry" class="book-img" />
+                <img src="../images/3panel.jpg" alt="Crochet panel" class="book-img" />
+              </div>
+              <!-- Spread 3: Right (text) -->
+              <div class="page">
+                <p class="book-desc">I began tackling projects that required shaping, color changes, and multiple parts. These taught me planning and problem-solving — similar to designing scalable UI components.</p>
+              </div>
+              <!-- Spread 4: Left (images) -->
+              <div class="page">
+                <img src="../images/4crocheting.jpg" alt="Crocheting in progress" class="book-img" />
+              </div>
+              <!-- Spread 4: Right (text) -->
+              <div class="page">
+                <p class="book-desc">Crocheting has been a journey of exploration and persistence. It helped me hone an eye for detail, structure, and aesthetics — all of which I bring into front-end and UX/UI design today.</p>
+              </div>
             </div>
-        </section>
+            <div style="text-align:center; margin-top: 1rem;">
+              <button id="book-prev-btn" class="book-nav-btn" onclick="$('#crochet-book').turn('previous')" style="margin-right:1.5rem;">Previous</button>
+              <button id="book-next-btn" class="book-nav-btn" onclick="$('#crochet-book').turn('next')">Next</button>
+            </div>
+          </div>
+        </div>
+        <div style="height: 4rem;"></div>
+        <div id="volunteer-book-wrapper" style="display:flex;flex-direction:column;align-items:center;margin:2rem 0;">
+          <div id="volunteer-book">
+            <!-- Cover page -->
+            <div class="page book-cover">
+              <h3>Giving Back to the Community</h3>
+              <p>Welcome! Flip through to see my volunteering journey.</p>
+            </div>
+            <!-- Spread 1: Left (image) -->
+            <div class="page">
+              <img src="../images/1can.jpg" alt="MRT Fundraising" class="book-img" />
+            </div>
+            <!-- Spread 1: Right (text) -->
+            <div class="page">
+              <p class="book-desc">One of my earliest memories of volunteering. Standing at MRT stations with donation tins helped me build confidence when speaking to strangers and taught me how small actions can contribute to something bigger.</p>
+            </div>
+            <!-- Spread 2: Left (images) -->
+            <div class="page">
+              <img src="../images/2door.jpg" alt="Community RC Event 1" class="book-img" />
+              <img src="../images/2usher.jpg" alt="Community RC Event 2" class="book-img" />
+              <img src="../images/2draw.jpg" alt="Community RC Event 3" class="book-img" />
+            </div>
+            <!-- Spread 2: Right (text) -->
+            <div class="page">
+              <p class="book-desc">Whether distributing dengue prevention kits, ushering at year-end events, or decorating tiles for Chingay, these experiences opened my eyes to the value of community spirit, creativity, and adaptability.</p>
+            </div>
+            <!-- Spread 3: Left (images) -->
+            <div class="page">
+              <img src="../images/3church1.jpg" alt="Church Christmas Event 1" class="book-img" />
+              <img src="../images/3church2.jpg" alt="Church Christmas Event 2" class="book-img" />
+            </div>
+            <!-- Spread 3: Right (text) -->
+            <div class="page">
+              <p class="book-desc">Over two years, I assisted in planning and running festive events for children from low-income families. It taught me how to be thoughtful, responsive, and present, especially when others are counting on you.</p>
+            </div>
+            <!-- Spread 4: Left (image) -->
+            <div class="page">
+              <img src="../images/4bennet.jpg" alt="Reflection" class="book-img" />
+            </div>
+            <!-- Spread 4: Right (text) -->
+            <div class="page">
+              <p class="book-desc">Volunteering has shaped how I see people and systems. It’s shown me the power of empathy, thoughtful planning, and flexibility. These are values I try to carry into everything I do.</p>
+            </div>
+          </div>
+          <div style="text-align:center; margin-top: 1rem;">
+            <button id="volunteer-prev-btn" class="book-nav-btn" onclick="$('#volunteer-book').turn('previous')" style="margin-right:1.5rem;">Previous</button>
+            <button id="volunteer-next-btn" class="book-nav-btn" onclick="$('#volunteer-book').turn('next')">Next</button>
+          </div>
+        </div>
     </main>
+    <!-- Image Zoom Modal -->
+    <div id="img-zoom-modal" class="img-zoom-modal" style="display:none;">
+      <div class="img-zoom-modal-content">
+        <img id="img-zoom-large" src="" alt="Zoomed image" />
+      </div>
+    </div>
     <footer class="footer">
       <div class="footer-content">
         <div class="footer-section">
@@ -64,6 +153,74 @@
         <div class="footer-tagline">Building efficient and user-centered web solutions.</div>
       </div>
     </footer>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="../js/turn.min.js"></script>
+    <script>
+      $(function(){
+        var $book = $('#crochet-book');
+        $book.turn({
+          width: 700,
+          height: 400,
+          autoCenter: true,
+          gradients: true,
+          elevation: 50,
+          when: {
+            turned: function(event, page, view) {
+              updateBookNav();
+            }
+          }
+        });
+        function updateBookNav() {
+          var totalPages = $book.turn('pages');
+          var currentPage = $book.turn('page');
+          $('#book-prev-btn').toggle(currentPage > 1);
+          var isLastSpread = (currentPage === totalPages) || (currentPage === totalPages - 1);
+          $('#book-next-btn').toggle(!isLastSpread);
+        }
+        updateBookNav();
+
+        // Volunteer book logic
+        var $volBook = $('#volunteer-book');
+        $volBook.turn({
+          width: 700,
+          height: 400,
+          autoCenter: true,
+          gradients: true,
+          elevation: 50,
+          when: {
+            turned: function(event, page, view) {
+              updateVolunteerNav();
+            }
+          }
+        });
+        function updateVolunteerNav() {
+          var totalPages = $volBook.turn('pages');
+          var currentPage = $volBook.turn('page');
+          $('#volunteer-prev-btn').toggle(currentPage > 1);
+          var isLastSpread = (currentPage === totalPages) || (currentPage === totalPages - 1);
+          $('#volunteer-next-btn').toggle(!isLastSpread);
+        }
+        updateVolunteerNav();
+
+        // Image zoom modal logic
+        $('.book-img').on('click', function() {
+          var src = $(this).attr('src');
+          var alt = $(this).attr('alt') || '';
+          $('#img-zoom-large').attr('src', src).attr('alt', alt);
+          $('#img-zoom-modal').fadeIn(120);
+        });
+        $('#img-zoom-modal').on('click', function(e) {
+          if (e.target === this) {
+            $('#img-zoom-modal').fadeOut(120);
+            $('#img-zoom-large').attr('src', '');
+          }
+        });
+        // Prevent modal close when clicking the image or close button itself
+        $('.img-zoom-modal-content, #img-zoom-large').on('click', function(e) {
+          e.stopPropagation();
+        });
+      });
+    </script>
     <script src="../js/main.js"></script>
 </body>
 </html> 

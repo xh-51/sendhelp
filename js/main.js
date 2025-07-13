@@ -156,4 +156,67 @@ function globalSlideInOnScroll() {
     observer.observe(el);
   });
 }
-document.addEventListener('DOMContentLoaded', globalSlideInOnScroll); 
+document.addEventListener('DOMContentLoaded', globalSlideInOnScroll);
+
+// --- Crochet Gallery Book Flip Logic ---
+document.addEventListener('DOMContentLoaded', function() {
+  const book = document.getElementById('crochet-book');
+  if (!book) return;
+  const cover = book.querySelector('.book-cover');
+  const flipbook = book.querySelector('.book-flipbook');
+  const spreads = Array.from(book.querySelectorAll('.book-spread'));
+  const prevBtn = book.querySelector('.book-prev');
+  const nextBtn = book.querySelector('.book-next');
+  let current = 0;
+
+  function showSpread(idx) {
+    spreads.forEach((spread, i) => {
+      spread.style.display = i === idx ? 'flex' : 'none';
+    });
+    if (prevBtn) prevBtn.style.display = idx === 0 ? 'none' : 'flex';
+    if (nextBtn) nextBtn.style.display = idx === spreads.length - 1 ? 'none' : 'flex';
+  }
+
+  function openBook() {
+    book.classList.remove('book-closed');
+    cover.style.display = 'none';
+    flipbook.style.display = 'flex';
+    current = 0;
+    showSpread(current);
+    book.focus();
+  }
+  function closeBook() {
+    book.classList.add('book-closed');
+    cover.style.display = 'flex';
+    flipbook.style.display = 'none';
+  }
+  function nextPage() {
+    if (current < spreads.length - 1) {
+      current++;
+      showSpread(current);
+    }
+  }
+  function prevPage() {
+    if (current > 0) {
+      current--;
+      showSpread(current);
+    }
+  }
+  if (cover) {
+    cover.addEventListener('click', openBook);
+    cover.addEventListener('keypress', e => {
+      if (e.key === 'Enter' || e.key === ' ') openBook();
+    });
+  }
+  if (nextBtn) nextBtn.addEventListener('click', nextPage);
+  if (prevBtn) prevBtn.addEventListener('click', prevPage);
+  // Keyboard navigation
+  book.addEventListener('keydown', e => {
+    if (flipbook.style.display !== 'flex') return;
+    if (e.key === 'ArrowRight') nextPage();
+    if (e.key === 'ArrowLeft') prevPage();
+    if (e.key === 'Escape') closeBook();
+  });
+  // Start with only the cover visible
+  closeBook();
+}); 
